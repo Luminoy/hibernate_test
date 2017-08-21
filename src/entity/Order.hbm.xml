@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <!-- 类的路径 -->
+    <class name="entity.Order" table="xxtp_lumin_order_tl"> 	
+        <id name="id" column="order_id">
+            <!-- 数据库主键生成策略 -->
+            <generator class="sequence">
+            	<param name="sequence">order_sequence</param>  
+            </generator>
+        </id>
+        <!-- 乐观锁设置的version字段，数据库中也需重新添加  -->
+        <version name="version"></version>
+        <property name="number" column="order_number"/>
+        <property name="createDate" column="create_date"/>
+    </class>
+</hibernate-mapping>

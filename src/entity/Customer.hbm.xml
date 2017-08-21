@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <!-- 类的路径 -->
+    <class name="entity.Customer" table="xxtp_lumin_customer_tl"> 	
+        <id name="id" column="customer_id">
+            <!-- 数据库主键生成策略 -->
+            <generator class="sequence">
+            	<param name="sequence">customer_sequence</param>  
+            </generator>
+        </id>
+        <!-- 乐观锁设置的version字段，数据库中也需重新添加  -->
+		<version name="version"></version>
+        <property name="name"/>
+        <property name="phone"/>
+        <property name="address"/>
+        <property name="sex"/>
+        <property name="startDate" column="start_date"/>
+        <property name="endDate" column="end_date"/>
+        <!-- 表之间的关系映射 -->
+        <set name="setOrders" lazy="false" cascade="all">
+        	<key>
+	        	<column name="customerId" />
+			</key>
+            <one-to-many class="entity.Order"/>
+     	</set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+<!-- mysql数据库驱动 -->
+<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+<!-- mysql数据库名称 -->
+<property name="hibernate.connection.url">jdbc:oracle:thin:@172.29.41.138:1521:DEMO</property>
+<!-- 数据库的登陆用户名 -->
+<property name="hibernate.connection.username">apps</property>
+<!-- 数据库的登陆密码 -->
+<property name="hibernate.connection.password">apps</property>
+<!-- 方言：为每一种数据库提供适配器，方便转换 -->
+<property name="hibernate.dialect">org.hibernate.dialect.Oracle9iDialect</property>
+	<mapping resource="entity/Customer.hbm.xml"/>
+	<mapping resource="entity/Order.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>
